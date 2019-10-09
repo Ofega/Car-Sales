@@ -14,7 +14,6 @@ const rootReducers = combineReducers({
 const store = createStore(rootReducers);
 
 const App = () => {
-  console.log(store)
   return (
     <Provider store={store}>
       <div className="boxes">

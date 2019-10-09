@@ -2,16 +2,15 @@ import * as types from './actionTypes';
 
 export const removeFeature = item => {
     return {
-        type: types.ADD_FEATURE,
+        type: types.REMOVE_FEATURE,
         payload: {
-            id: item.id
+            id: item.id,
+            price: item.price
         }
     }
 };
 
 export const buyItem = item => {
-
-    console.log(item)
     return {
         type: types.ADD_FEATURE,
         payload: {

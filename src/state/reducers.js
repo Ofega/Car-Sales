@@ -21,27 +21,28 @@ const initialState = {
 export const carReducers = (state = initialState, action) => {
     switch(action.type) {
         case types.REMOVE_FEATURE:
-            console.log(state.car.features.filter(item => item !== action.payload.id))
-            return {
-              ...state,
-              car: {
-                ...state,
-                features: state.car.features.filter(item => item !== action.payload.id)
-              }
-            };
+          return {
+            ...state,
+            additionalPrice: action.payload.price,
+            car: {
+              ...state.car,
+              features: state.car.features.filter(item => item.id !== action.payload.id)
+            }
+          };
         case types.ADD_FEATURE:
-            return {
-              ...state,
-              car: {
-                ...state,
-                features: [ ...state.car.features, {
-                  id: action.payload.id,
-                  name: action.payload.name,
-                  price: action.payload.price
-                }]
-              }
-            };
+          return {
+            ...state,
+            additionalPrice: action.payload.price,
+            car: {
+              ...state.car,
+              features: [ ...state.car.features, {
+                id: action.payload.id,
+                name: action.payload.name,
+                price: action.payload.price
+              }]
+            }
+          };
         default:
-            return state;
+          return state;
     }
 }
