@@ -23,9 +23,10 @@ export const carReducers = (state = initialState, action) => {
         case types.REMOVE_FEATURE:
           return {
             ...state,
-            additionalPrice: action.payload.price,
+            additionalPrice: - action.payload.price,
             car: {
               ...state.car,
+              price: state.car.price + state.additionalPrice,
               features: state.car.features.filter(item => item.id !== action.payload.id)
             }
           };
@@ -35,6 +36,7 @@ export const carReducers = (state = initialState, action) => {
             additionalPrice: action.payload.price,
             car: {
               ...state.car,
+              price: state.car.price + state.additionalPrice,
               features: [ ...state.car.features, {
                 id: action.payload.id,
                 name: action.payload.name,
